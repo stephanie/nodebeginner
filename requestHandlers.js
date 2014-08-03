@@ -11,8 +11,10 @@ function start(response, postData) {
       '</head>' +
       '<body>' +
         '<form action="upload" method="post">' +
-          '<textarea name="text" rows="20" cols="60"></textarea>' +
-          '<input type="submit" value="Submit text" />' +
+          '<input type="text" name="r"></input>' +
+          '<input type="text" name="g"></input>' +
+          '<input type="text" name="b"></input>' +
+          '<input type="submit" value="Convert RGB to HEX" />' +
         '</form>' +
       '</body>' +
     '</html>';
@@ -26,7 +28,9 @@ function upload(response, postData) {
   console.log("Request handler 'upload' was called");
   response.writeHead(200, {"Content-type" : "text/plain"});
   response.write("You've sent the text: " + 
-    querystring.parse(postData).text); 
+    "r: " + querystring.parse(postData).r + 
+    ", g: " + querystring.parse(postData).g + 
+    ", b: " + querystring.parse(postData).b); 
   response.end();
 }
 
